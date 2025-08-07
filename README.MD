@@ -1,81 +1,164 @@
-<div align="center">
+# API de Dados da Fórmula 1 🏎️
 
-  <img src="./.github/assets/blue-saiyan-bg.png" alt="Logo" height="200">
-  <h1 align="center"><strong>NODE BOILERPLATE - BLUE EDITION</strong></h1>
-  <p align="center">
-	  Don't start a new Node project from zero!<br> Use this simple <b>Nodejs</b> boilerplate with pre-configured <b>Typescript</b> in a modern way.
-  </p>
+![Made with Fastify](https://img.shields.io/badge/Made%20with-Fastify-black?style=for-the-badge&logo=fastify)
+![Built with TypeScript](https://img.shields.io/badge/Built%20with-TypeScript-blue?style=for-the-badge&logo=typescript)
 
-</div>
+Uma API RESTful minimalista construída com **Fastify** e **TypeScript** para fornecer dados estáticos sobre equipes e pilotos de Fórmula 1. Este projeto serve como um exemplo simples de como criar rotas, manipular requisições e servir dados em formato JSON.
 
-<br />
+---
 
-  <!-- Badges -->
-<div align="center">
-  
-  [![TypeScript version][ts-badge]][typescript-5-4]
-  [![Node.js version][nodejs-badge]][nodejs]
+## ✨ Funcionalidades
 
-</div>
+-   Listar todas as equipes.
+-   Listar todos os pilotos.
+-   Buscar um piloto específico pelo seu ID.
+-   Configuração de CORS para permitir requisições de domínios específicos.
 
-# 🚀 Technologies
+---
 
-This code source was developed with the following items:
+## 🛠️ Tecnologias Utilizadas
 
-### 📦 Dependencies
+-   [Node.js](https://nodejs.org/)
+-   [TypeScript](https://www.typescriptlang.org/)
+-   [Fastify](https://www.fastify.io/)
+-   [@fastify/cors](https://github.com/fastify/fastify-cors)
 
-- [typescript][typescript-npm] - Superset for application scale JavaScript development
-- [tsx][tsx-npm] - TypeScript Execute (tsx): Enable Node.js to run TypeScript
-- [tsup][tsup-npm] - Bundle your TypeScript library with no config, powered by esbuild
-- [@types/node][@types/node-npm] - type definitions for node
+---
 
-### 📄 Files
+## 🚀 Como Começar
 
-- `.gitignore` - Ignore folders like node_modules
-- `.env` - Enviroment variables
-- `tsconfig.json` - Typescript configure Options
+Siga os passos abaixo para executar o projeto localmente.
 
-### ⚡ Scripts
+### Pré-requisitos
 
-- `npm run dist`: Compiles TypeScript files to JavaScript in the dist directory.
-- `npm run start:dev`: Runs the server in development mode with environment variables loaded from the .env file.
-- `npm run start:watch`: Runs the server in development mode with support for automatic reload on file changes.
-- `npm run start:dist`: Compiles the project and runs the compiled version from the dist directory.
+-   **Node.js** (versão 18 ou superior recomendada)
+-   **npm** ou **yarn**
 
-# 👨‍💻 How To Use
+### Instalação e Execução
 
-click in **[Use this template]** OR
+1.  **Clone o repositório:**
+    ```bash
+    git clone [https://github.com/seu-usuario/nome-do-repositorio.git](https://github.com/seu-usuario/nome-do-repositorio.git)
+    ```
 
-To clone and run this application, you'll need [Git](https://git-scm.com), [Node.js v20+](https://nodejs.org/en/) + [NPM v10+](https://nodejs.org/en/) installed on your computer. From your command line:
+2.  **Acesse o diretório do projeto:**
+    ```bash
+    cd nome-do-repositorio
+    ```
 
-```bash
-# Clone this repository
-$ git clone https://github.com/felipeAguiarCode/node-blue-boilerplate
+3.  **Instale as dependências:**
+    ```bash
+    npm install
+    ```
 
-# Go into the repository
-$ cd node-blue-boilerplate
+4.  **Inicie o servidor de desenvolvimento:**
 
-# Install dependencies
-$ npm install
-```
+    Para executar o servidor e recarregá-lo automaticamente ao salvar alterações, recomendo usar o `tsx`:
+    ```bash
+    # Instale o tsx como uma dependência de desenvolvimento
+    npm install -D tsx
 
-## Author
+    # Inicie o servidor em modo watch
+    npx tsx watch server.ts
+    ```
 
-| [<img src="https://avatars3.githubusercontent.com/u/37452836?s=96&v=4"><br><sub>Felipe Aguiar</sub>](https://github.com/felipeAguiarCode) |
-| :---------------------------------------------------------------------------------------------------------------------------------------: |
-|                                            [Linkedin](www.linkedin.com/in/felipe-aguiar-exe/)                                             |
+5.  O servidor estará em execução em `http://localhost:3445`.
 
-# Credits
+---
 
-icons by [Pino Lamanna][dribble-icon]
+## 📖 Endpoints da API
 
-[typescript]: https://www.typescriptlang.org/
-[typescript-5-4]: https://www.typescriptlang.org/
-[ts-badge]: https://img.shields.io/badge/TypeScript-5.4-blue.svg
-[nodejs-badge]: https://img.shields.io/badge/Node.js->=%2020.00-blue.svg
-[nodejs]: https://nodejs.org/
-[dribble-icon]: https://dribbble.com/Schakalwal
-[typescript-npm]: https://www.npmjs.com/package/typescript
-[tsx-npm]: https://www.npmjs.com/package/tsx
-[tsup-npm]: https://www.npmjs.com/package/tsup
-[@types/node-npm]: https://www.npmjs.com/package/@types/node
+A API possui os seguintes endpoints disponíveis:
+
+### Equipes
+
+-   **`GET /teams`**
+
+    Retorna uma lista de todas as equipes de Fórmula 1.
+
+    **Exemplo de Resposta (200 OK):**
+    ```json
+    [
+      {
+        "id": 1,
+        "name": "McLaren",
+        "base": "Working, United Kingdom"
+      },
+      {
+        "id": 2,
+        "name": "Mercedes",
+        "base": "Brackley, United Kingdom"
+      },
+      {
+        "id": 3,
+        "name": "Red Bull Racing",
+        "base": "Milton Keynes, United Kingdom"
+      }
+    ]
+    ```
+
+### Pilotos
+
+-   **`GET /drivers`**
+
+    Retorna uma lista de todos os pilotos.
+
+    **Exemplo de Resposta (200 OK):**
+    ```json
+    [
+      {
+        "id": 1,
+        "name": "Max Verstappen",
+        "team": "Red Bull Racing"
+      },
+      {
+        "id": 2,
+        "name": "Lewis Hamilton",
+        "team": "Ferrari"
+      },
+      {
+        "id": 3,
+        "name": "Lando Norris",
+        "team": "McLaren"
+      }
+    ]
+    ```
+
+-   **`GET /drivers/:id`**
+
+    Retorna um piloto específico com base no seu `id`.
+
+    **Exemplo de Resposta (200 OK) para `GET /drivers/1`:**
+    ```json
+    {
+      "driver": {
+        "id": 1,
+        "name": "Max Verstappen",
+        "team": "Red Bull Racing"
+      }
+    }
+    ```
+
+    **Exemplo de Resposta de Erro (404 Not Found) para um ID inválido:**
+    ```json
+    {
+      "message": "Driver Not Found"
+    }
+    ```
+
+---
+
+### 🌐 Configuração do CORS
+
+O Cross-Origin Resource Sharing (CORS) está configurado para aceitar requisições `GET` apenas das seguintes origens:
+
+-   `www.dio.me`
+-   `www.fabiodejesus.dev`
+
+Qualquer requisição de outra origem será bloqueada pelo navegador, conforme a política de mesma origem.
+
+---
+
+## 📄 Licença
+
+Este projeto está licenciado sob a Licença MIT.
